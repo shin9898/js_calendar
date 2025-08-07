@@ -23,14 +23,20 @@ function parseArguments() {
 
 /**
  * 月の妥当性をチェック(1-12)
- * @param {string}
+ * @param {number} month - チェックする月(1-12)
+ * @throws {Error} 不正な月の場合
  */
 function validateMonth(month) {
-
+    if (isNaN(month) || month < 1 || month > 12) {
+        throw new Error(`cal: ${month}: bad month`);
+    }
 }
 
 /**
  * カレンダー生成
+ * @param {number} year - 年
+ * @param {number} month - 月(1-12)
+ * @returns {string} フォーマットされたカレンダー
  */
 function generateCalendar(year, month) {
 
